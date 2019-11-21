@@ -47,7 +47,9 @@
 * If that link doesn't work, Use this: https://discord.gg/akXEgcF
 
 ### Release History
-
+* Version 1.1
+    * ADD: Config option for police to use the blackmarket
+    
 * Version 1.0
     * ADD: Refill stock on server restart
     * ADD: Random weapon delivery at specified time
