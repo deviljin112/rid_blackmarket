@@ -165,13 +165,22 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
-
 		local coords = GetEntityCoords(PlayerPedId())
-
-		for k,v in pairs(Config.Zones) do
-			for i = 1, #v.Locations, 1 do
-				if (Config.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.DrawDistance) then
-					DrawMarker(Config.Type, v.Locations[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Size.x, Config.Size.y, Config.Size.z, Config.Color.r, Config.Color.g, Config.Color.b, 100, false, true, 2, false, false, false, false)
+		
+		if ESX.PlayerData.job.name ~='police' then
+			for k,v in pairs(Config.Zones) do
+				for i = 1, #v.Locations, 1 do
+					if (Config.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.DrawDistance) then
+						DrawMarker(Config.Type, v.Locations[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Size.x, Config.Size.y, Config.Size.z, Config.Color.r, Config.Color.g, Config.Color.b, 100, false, true, 2, false, false, false, false)
+					end
+				end
+			end
+		elseif Config.Police_Visibility then 
+			for k,v in pairs(Config.Zones) do
+				for i = 1, #v.Locations, 1 do
+					if (Config.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.DrawDistance) then
+						DrawMarker(Config.Type, v.Locations[i], 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Size.x, Config.Size.y, Config.Size.z, Config.Color.r, Config.Color.g, Config.Color.b, 100, false, true, 2, false, false, false, false)
+					end
 				end
 			end
 		end
@@ -192,10 +201,17 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
-		if isInMarker and not HasAlreadyEnteredMarker then
+
+		if isInMarker and not HasAlreadyEnteredMarker and ESX.PlayerData.job.name ~='police' then
 			HasAlreadyEnteredMarker = true
 			TriggerEvent('rid_blackmarket:hasEnteredMarker', currentZone)
 		end
+		
+		if isInMarker and not HasAlreadyEnteredMarker and Config.Police_Use then
+			HasAlreadyEnteredMarker = true
+			TriggerEvent('rid_blackmarket:hasEnteredMarker', currentZone)
+		end
+		
 		
 		if not isInMarker and HasAlreadyEnteredMarker then
 			HasAlreadyEnteredMarker = false

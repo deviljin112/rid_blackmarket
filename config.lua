@@ -25,6 +25,9 @@ Config.Timed_restock = true
 Config.Hour = 18
 Config.Minute = 00
 
+-- Police 
+Config.Police_Visibility = true
+Config.Police_Use = true
 -- What weapons are to be randomized ( needs above to be true )
 Config.Weapon_restock = {
 
