@@ -61,6 +61,14 @@
 * Specify whether Restock or Refill occurs at specified time
 * Random Chance notification for police when purchasing weapon from black market
 
+### Dependancies
+
+- ESX
+
+### Inspired By
+
+- esx_weaponshop
+
 #### MORE UPDATES IN THE FUTURE!
 
 #### Please like/favorite on the FiveM Forums.
