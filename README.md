@@ -62,6 +62,9 @@
 * Specify whether Restock or Refill occurs at Server Restart
 * Specify whether Restock or Refill occurs at specified time
 * Random Chance notification for police when purchasing weapon from black market
+* Police to "shut down" black market sales for 24hrs (config specific)
+* Ability to add more weapons to config randomizer (currently max is 3 per category)
+* Ability to add varied amounts of weapons for each category (currently capped at 3 for all categories)
 
 ### Dependancies
 
