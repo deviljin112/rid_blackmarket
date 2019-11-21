@@ -1,12 +1,12 @@
 # Weapon Black Market Shop
->    MADE BY Re-Ignited Development Crew
+>    MADE BY : Re-Ignited D3velopment Crew
 
 >    Visit our Discord Server for direct help with our scripts and general ESX / Fivem Help
 >    ( https://discord.gg/akXEgcF )
 
->    Author: Deviljin112 Discord: D3v#0802 Github: ( https://github.com/Deviljin112 )
+>    Author: Deviljin112    Discord: D3v#0802   Github: ( https://github.com/Deviljin112 )
 
->    Co-Author: BTNGaming Discord: BTNGaming#0001 Github: ( https://github.com/BTNGaming )
+>    Co-Author: BTNGaming   Discord: BTNGaming#0001 Github: ( https://github.com/BTNGaming )
 
 >    Special thanks to : Crumble - Helped with some coding issues :)
 
