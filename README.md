@@ -56,7 +56,6 @@
 
 ### TO DO
 
-* Police cant use the marker
 * Specify whether Restock or Refill occurs at Server Restart
 * Specify whether Restock or Refill occurs at specified time
 * Random Chance notification for police when purchasing weapon from black market
