@@ -49,6 +49,7 @@
 ### Release History
 * Version 1.1
     * ADD: Config option for police to use the blackmarket
+    * ADD: Config option for police to see the blackmarket marker
     
 * Version 1.0
     * ADD: Refill stock on server restart
