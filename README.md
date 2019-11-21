@@ -30,6 +30,7 @@
 
     There is also an option for a script restart refill.
     Basically if the server or script is restarted you can have the 'stock' of weapons refilled to random values specified in Config file.
+    Again this will only occur to the weapons that have 0 stock at the time of the restart.
 
     You can change what the weapons are changed to and everything about them, price, stock amounts etc.
 
