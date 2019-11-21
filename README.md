@@ -1,5 +1,6 @@
 # Weapon Black Market Shop
 >    MADE BY Re-Ignited Development Crew
+
 >    Visit our Discord Server for direct help with our scripts and general ESX / Fivem Help
 >    ( https://discord.gg/akXEgcF )
 
