@@ -47,6 +47,18 @@
 * If that link doesn't work, Use this: https://discord.gg/akXEgcF
 
 ### Release History
+
+* Version 2.0
+    * ADD: Disc-Inventory Option
+    * ADD: Option to get ammo (disc-inventory only)
+    * ADD: Change amount of ammo given (non disc-inventory only)
+    * ADD: Option to choose when RESTOCK or REFILL occurs
+    * ADD: Shotguns, SMGs in Blackmarket
+    * ADD: Ability to add any amount of weapons to randomizer
+    * ADD: Option to choose how many weapons are in each category ( Removed category limit )
+    * ADD: Random values for stock
+    * FIX: Removed DEBUG prints and other debugging functionality
+
 * Version 1.1
     * ADD: Config option for police to use the blackmarket
     * ADD: Config option for police to see the blackmarket marker
@@ -59,14 +71,9 @@
 
 ### TO DO
 
-* Specify whether Restock or Refill occurs at Server Restart
-* Specify whether Restock or Refill occurs at specified time
+* Change of location at specified time to a random from config
 * Random Chance notification for police when purchasing weapon from black market
 * Police to "shut down" black market sales for 24hrs (config specific)
-* Ability to add more weapons to config randomizer (currently max is 3 per category)
-* Ability to add varied amounts of weapons for each category (currently capped at 3 for all categories)
-* Set weapons as items for Disk-Inventoryhud
-* Change amount of ammo given on sale
 
 ### Dependancies
 

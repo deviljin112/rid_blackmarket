@@ -8,7 +8,11 @@ MySQL.ready(function()
 	Citizen.CreateThread(function()
 		if Config.Refill_stock then
 			Citizen.Wait(2000)
-			weaponRestock()
+			if Config.Restart_refill then
+				weaponRestock()
+			else
+				weaponRandomizer()
+			end
 		else
 			return
 		end
@@ -21,8 +25,8 @@ end)
 
 ESX.RegisterServerCallback('rid_blackmarket:buyWeapon', function(source, cb, weaponName, zone)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	local price = GetPrice(weaponName, zone)
-	local stock = GetStock(weaponName, zone) -- Pull current stock level in DB
+	local price = GetPrice(weaponName, zone) -- Pull current price from DB
+	local stock = GetStock(weaponName, zone) -- Pull current stock level from DB
 
 	if price == 0 then
 		print(('rid_blackmarket: %s attempted to buy a unknown weapon!'):format(xPlayer.identifier))
@@ -42,8 +46,32 @@ ESX.RegisterServerCallback('rid_blackmarket:buyWeapon', function(source, cb, wea
 				if zone == 'BlackMarket' then
 					if xPlayer.getAccount('black_money').money >= price then
 						xPlayer.removeAccountMoney('black_money', price)
-						xPlayer.addWeapon(weaponName, 42)
-						
+
+						if Config.Item_mode then
+							xPlayer.addInventoryItem(weaponName, 1)
+							if Config.Give_ammo then
+								local current_ammo = ""
+								local str = weaponName
+								
+								-- Choose correct ammo logic
+								if string.find(str, "PISTOL" or "REVOLVER") then
+									current_ammo = "disc_ammo_pistol"
+								elseif string.find(str, "SHOTGUN" or "MUSKET") then
+									current_ammo = "disc_ammo_shotgun"
+								elseif string.find(str, "SMG" or "MG" or "PDW") then
+									current_ammo = "disc_ammo_smg"
+								elseif string.find(str, "SNIPER" or "MARKSMAN") then
+									current_ammo = "disc_ammo_snp"
+								elseif string.find(str, "RIFLE" or "CARBINE") then
+									current_ammo = "disc_ammo_rifle"
+								end
+
+								xPlayer.addInventoryItem(current_ammo, 1)
+							end
+						else
+							xPlayer.addWeapon(weaponName, Config.Ammo_amount)
+						end
+
 						-- Take stock logic
 						MySQL.Async.execute('UPDATE black_market SET stock = stock - 1 WHERE item = @item', {
 							['@item'] = weaponName
@@ -114,13 +142,17 @@ Citizen.CreateThread(function()
     print("rid_blackmarket: Started!")
 
 	if Config.Timed_restock then
-		TriggerEvent("cron:runAt",Config.Hour,Config.Minute,weaponRandomizer)
+		if Config.Restart_restock then
+			TriggerEvent("cron:runAt",Config.Hour,Config.Minute,weaponRandomizer)
+		else
+			TriggerEvent("cron:runAt",Config.Hour,Config.Minute,Weapon_restock)
+		end
 	end
 end)
 
 function weaponRandomizer(d,h,m)
 	-- CRON Function at specified time
-	print("New Weapons in Black Market")
+	print("rid_blackmarket: New Weapons in Black Market")
 
 	MySQL.Async.fetchAll('SELECT * FROM black_market', {}, function(result)
         for i=1, #result, 1 do
@@ -144,46 +176,50 @@ function weaponRandomizer(d,h,m)
 			local new_weapon = ""
 			local new_price = 0
 
-			print(current_id)
-
 			if target_category == "pistol" then
 
 				-- Choose Random from config set
-				new_set = Config.Weapon_restock["pistol"][math.random(3)]
+				new_set = Config.Weapon_restock["pistol"][math.random(Config.Cat_pistols)]
 
 				new_weapon = new_set.name
 				new_price = new_set.price
 				new_stock = new_set.starting_stock
 
-				print(new_weapon)
-				print(new_price)
-				print(new_stock)
+			elseif target_category == "shotgun" then
+
+				-- Choose Random from config set
+				new_set = Config.Weapon_restock["shotgun"][math.random(Config.Cat_shotgun)]
+
+				new_weapon = new_set.name
+				new_price = new_set.price
+				new_stock = new_set.starting_stock
+
+			elseif target_category == "smg" then
+
+				-- Choose Random from config set
+				new_set = Config.Weapon_restock["smg"][math.random(Config.Cat_smg)]
+
+				new_weapon = new_set.name
+				new_price = new_set.price
+				new_stock = new_set.starting_stock
 
 			elseif target_category == "rifle" then
 
 				-- Choose Random from config set
-				new_set = Config.Weapon_restock["rifle"][math.random(3)]
+				new_set = Config.Weapon_restock["rifle"][math.random(Config.Cat_rifles)]
 
 				new_weapon = new_set.name
 				new_price = new_set.price
 				new_stock = new_set.starting_stock
-
-				print(new_weapon)
-				print(new_price)
-				print(new_stock)
 
 			elseif target_category == "sniper" then
 
 				-- Choose Random from config set
-				new_set = Config.Weapon_restock["sniper"][math.random(3)]
+				new_set = Config.Weapon_restock["sniper"][math.random(Config.Cat_snipers)]
 
 				new_weapon = new_set.name
 				new_price = new_set.price
 				new_stock = new_set.starting_stock
-
-				print(new_weapon)
-				print(new_price)
-				print(new_stock)
 
 			end
 
@@ -205,8 +241,8 @@ function weaponRandomizer(d,h,m)
 end
 
 function weaponRestock()
-    -- On Resource Restart
-    print("Restocking Current Weapons - DEBUG")
+	-- On Resource Restart
+	print("rid_blackmarket: Refilling all weapon stock")
 
     MySQL.Async.fetchAll('SELECT * FROM black_market', {}, function(result)
         for i=1, #result, 1 do
@@ -228,6 +264,10 @@ function weaponRestock()
 
 			if target_category == "pistol" then
 				new_stock = Config.Pistol_stock
+			elseif target_category == "shotgun" then
+				new_stock = Config.Shotgun_stock
+			elseif target_category == "smg" then
+				new_stock = Config.Smg_stock
 			elseif target_category == "rifle" then
 				new_stock = Config.Rifle_stock
 			elseif target_category == "sniper" then
