@@ -62,6 +62,11 @@ Config.Item_mode = true
 -- Requires Item_mode = true
 Config.Give_ammo = true
 
+-- Use black money or normal money?
+-- If true will use black money
+-- If false wil use normal money
+Config.Use_black_money = true
+
 
 --== POLICE SETTINGS ==--
 
