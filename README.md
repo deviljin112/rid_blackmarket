@@ -48,6 +48,10 @@
 
 ### Release History
 
+* Version 2.2
+    * FIX: Job check for some reason broke the script on server restart
+    * FIX: Police Job Check Logic
+
 * Version 2.1
     * ADD: Option to choose normal money or black money
 

@@ -68,13 +68,16 @@ Config.Locale = 'en'
 
 Config.Restart_refill = true
 -- If this is set to TRUE, Items will be REFILLED when the server or script is restarted.
+-- If this is set to FALSE, Items will be RESTOCKED when the server or script is restarted
 
 Config.Restart_restock = true
 -- If this is set to TRUE, Items will be RESTOCKED when the server or script is restarted.
+-- If this is set to FALSE, Items will be REFILLED when the server or script is restarted.
 
 Config.Item_mode = true
--- If this is set to TRUE, Weapons will be sent to you as an inventory item, for scripts like Disc-InventoryHud,
--- You MUST set this to true!!! (For normal inventory system, set this to FALSE)
+-- If this is set to TRUE, Weapons will be sent to you as an inventory item, 
+-- For scripts like Disc-InventoryHud You MUST set this to TRUE!!! 
+-- (For normal inventory system, set this to FALSE)
 
 Config.Give_ammo = true
 -- If this is set to TRUE it will give 1 normal ammo pack to the player when purchasing a gun.
@@ -90,10 +93,11 @@ Config.Use_black_money = true
 
 Config.Police_Visibility = true
 -- If this is set to TRUE, Police CAN see the Black Market marker if they are close enough.
--- Set to false for police to NOT be able to see the marker at all.
+-- Set to FALSE for police to NOT be able to see the marker at all.
 
 Config.Police_Use = true
 -- If this is set to TRUE, Police can use the marker, and purchase black market weapons/items.
+-- If this is set to FALSE, Police will not be able to use the marker.
 
 -------------------------------------------
 
@@ -102,6 +106,7 @@ Config.Police_Use = true
 Config.Ammo_amount = 42
 -- Set this number to how much ammo you want a player given when purchasing a black market weapon.
 -- THIS IS FOR WEAPON MODE, Config.Item_mode MUST be set to false.
+-- (Normal Weapon Mode)
 
 ------------------------------------------
 
@@ -109,6 +114,7 @@ Config.Ammo_amount = 42
 
 Config.Refill_stock = true
 -- With this set to TRUE, Your stock will refill when server restart/script restart occurs.
+-- This set to FALSE, will disable the whole module.
 
 Config.Pistol_stock Config.Shotgun_stock Config.Smg_stock Config.Rifle_stock Config.Sniper_stock = math.random(#,#)
 -- Here you can choose the amount of guns to restock if Config.Refill_stock is enabled. You can either use math.random(#,#)
@@ -121,6 +127,7 @@ Config.Pistol_stock Config.Shotgun_stock Config.Smg_stock Config.Rifle_stock Con
 
 Config.Timed_restock = true
 -- If this is set to true, The weapons will be restocked at a time chosen by you in the next setting below!
+-- This set to FALSE, will disable the whole module.
 
 Config.Hour = 18
 -- What hour do you want the RESTOCKING to occur? (24 hour cycle. Ex. 18 = 6PM).

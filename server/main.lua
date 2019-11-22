@@ -44,16 +44,8 @@ ESX.RegisterServerCallback('rid_blackmarket:buyWeapon', function(source, cb, wea
 				cb(false)
 			else
 				if zone == 'BlackMarket' then
-					local money_type = ''
-
-					if Config.Use_black_money then
-						money_type = 'black_money'
-					else
-						money_type = 'money'
-					end
-
-					if xPlayer.getAccount(money_type).money >= price then
-						xPlayer.removeAccountMoney(money_type, price)
+					if xPlayer.getAccount('black_money').money >= price then
+						xPlayer.removeAccountMoney('black_money', price)
 
 						if Config.Item_mode then
 							xPlayer.addInventoryItem(weaponName, 1)

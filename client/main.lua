@@ -17,6 +17,7 @@ local CurrentAction = nil
 local CurrentActionMsg = ''
 local CurrentActionData = {}
 local ShopOpen = false
+local PlayerData = {}
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -29,6 +30,12 @@ Citizen.CreateThread(function()
 			Config.Zones[k].Items = v
 		end
 	end)
+
+	while ESX.GetPlayerData().job == nil do
+		Citizen.Wait(10)
+	end
+
+	PlayerData = ESX.GetPlayerData()
 end)
 
 RegisterNetEvent('rid_blackmarket:sendShop')
@@ -166,8 +173,8 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
-		
-		if ESX.PlayerData.job.name ~='police' then
+
+		if PlayerData.job and  PlayerData.job.name ~= 'police' then
 			for k,v in pairs(Config.Zones) do
 				for i = 1, #v.Locations, 1 do
 					if (Config.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Locations[i], true) < Config.DrawDistance) then
@@ -193,6 +200,7 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		local coords = GetEntityCoords(PlayerPedId())
 		local isInMarker, currentZone = false, nil
+		PlayerData = ESX.GetPlayerData()
 
 		for k,v in pairs(Config.Zones) do
 			for i=1, #v.Locations, 1 do
@@ -202,12 +210,12 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		if isInMarker and not HasAlreadyEnteredMarker and ESX.PlayerData.job.name ~='police' then
-			HasAlreadyEnteredMarker = true
-			TriggerEvent('rid_blackmarket:hasEnteredMarker', currentZone)
-		end
-		
-		if isInMarker and not HasAlreadyEnteredMarker and Config.Police_Use then
+		if PlayerData.job and PlayerData.job.name ~= 'police' then
+			if isInMarker and not HasAlreadyEnteredMarker then
+				HasAlreadyEnteredMarker = true
+				TriggerEvent('rid_blackmarket:hasEnteredMarker', currentZone)
+			end
+		elseif isInMarker and not HasAlreadyEnteredMarker and Config.Police_Use then
 			HasAlreadyEnteredMarker = true
 			TriggerEvent('rid_blackmarket:hasEnteredMarker', currentZone)
 		end

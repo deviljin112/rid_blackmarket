@@ -16,8 +16,6 @@ Edit for personal uses only
 
 -= FOR PERSONAL USE ONLY =-
 
-FOR A VERY DETAILED EXPLANATION ABOUT THE CONFIG OPTIONS, PLEASE REFER TO THE WIKI PAGE HERE - https://github.com/deviljin112/rid_blackmarket/wiki
-
 ]]--
 
 
@@ -39,7 +37,7 @@ Config.Locale = 'en'
 TERMS:
 
 	RESTOCK - Items will be replaced with new ones ( Delivery of new items ) when current stock is 0
-	REFILL - Items will be restocked with new stock when their current stock is 0, no new items will be delivered
+	REFIL - Items will be restocked with new stock when their current stock is 0, no new items will be delivered
 
 ]]--
 
@@ -58,25 +56,20 @@ Config.Restart_refill = true
 Config.Restart_restock = true
 
 -- If you using disc-inventory set this to true otherwise false
-Config.Item_mode = true
+Config.Item_mode = false
 
 -- Give ammo pack after buying a gun?
 -- Requires Item_mode = true
 Config.Give_ammo = true
 
--- Use black money or normal money?
--- If true will use black money
--- If false wil use normal money
-Config.Use_black_money = true
-
 
 --== POLICE SETTINGS ==--
 
 -- Can police see marker?
-Config.Police_Visibility = true
+Config.Police_Visibility = false
 
 -- Can police use the marker?
-Config.Police_Use = true
+Config.Police_Use = false
 
 
 --== AMMO SETTINGS ==--
