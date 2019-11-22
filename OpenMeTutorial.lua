@@ -48,11 +48,15 @@ Config.Size = { x = 1.5, y = 1.5, z = 0.5 }
 
 Config.Color = { r = 255, g = 0, b = 0 }
 -- This is how the color of the marker is chosen, If you want to change the color, you can find charts to give you color choices,
--- Just replace the numbers with corresponding numbers in your RGB Color Chart. A decent chart can be found HERE
+-- Just replace the numbers with corresponding numbers in your RGB Color Chart.
+-- A decent chart can be found here: https://www.rapidtables.com/web/color/RGB_Color.html
 
 Config.Type = 1
--- This will allow you to change the marker to whatever you want within a list that GTA Provides. Click HERE to see a list of available markers.
-Language Settings
+-- This will allow you to change the marker to whatever you want within a list that GTA Provides.
+---List of available Markers: https://wiki.gtanet.work/index.php?title=Marker
+
+
+--== Language Settings ==--
 
 Config.Locale = 'en'
 -- Set your Language option here, (br, de, en, es, fi, fr, pl, sv) Or create your own Locale, and set it here.
