@@ -48,6 +48,9 @@
 
 ### Release History
 
+* Version 2.1
+    * ADD: Option to choose normal money or black money
+
 * Version 2.0
     * ADD: Disc-Inventory Option
     * ADD: Option to get ammo (disc-inventory only)
