@@ -16,6 +16,8 @@ Edit for personal uses only
 
 -= FOR PERSONAL USE ONLY =-
 
+FOR A VERY DETAILED EXPLANATION ABOUT THE CONFIG OPTIONS, PLEASE REFER TO THE WIKI PAGE HERE - https://github.com/deviljin112/rid_blackmarket/wiki
+
 ]]--
 
 
@@ -37,7 +39,7 @@ Config.Locale = 'en'
 TERMS:
 
 	RESTOCK - Items will be replaced with new ones ( Delivery of new items ) when current stock is 0
-	REFIL - Items will be restocked with new stock when their current stock is 0, no new items will be delivered
+	REFILL - Items will be restocked with new stock when their current stock is 0, no new items will be delivered
 
 ]]--
 
