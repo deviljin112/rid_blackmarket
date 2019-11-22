@@ -75,9 +75,14 @@
 * Random Chance notification for police when purchasing weapon from black market
 * Police to "shut down" black market sales for 24hrs (config specific)
 
-### Dependancies
+### Dependencies
 
 - ESX
+
+**IF USING DISC-INVENTORYHUD THE FOLLOWING ARE DEPENDENCIES**
+- Disc-Ammo
+- Disc-Base
+- Disc-InventoryHud
 
 ### Inspired By
 
