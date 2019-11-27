@@ -48,7 +48,7 @@ TERMS:
 -- What should be used on server / script restart?
 -- If true stock will be REFILLED
 -- If false stock will be RESTOCKED
-Config.Restart_refill = true
+Config.Restart_refill = false
 
 -- What should happen at the timed event?
 -- If true stock wil be RESTOCKED
