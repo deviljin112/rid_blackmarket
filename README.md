@@ -6,7 +6,7 @@
 
 >    Author: Deviljin112    Discord: D3v#0802   Github: ( https://github.com/Deviljin112 )
 
->    Co-Author: BTNGaming   Discord: BTNGaming#0001 Github: ( https://github.com/BTNGaming )
+>    Co-Author: BTNGaming   Discord: BTNGaming#7728 Github: ( https://github.com/BTNGaming )
 
 >    Special thanks to : Crumble - Helped with some coding issues :)
 
